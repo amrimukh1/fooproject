@@ -2,8 +2,8 @@ pipeline {
   agent any 
   environment{
     def myString = 'https://github.com/amrimukh1/fooproject.git'
-    def myString1 = 'mvn compile'
-    def myString2 = 'mvn test'
+    def myString1 = "mvn compile"
+    def myString2 = "mvn test"
     def myString3 = '**/TEST*.xml'
   }
   
