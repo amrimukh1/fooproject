@@ -1,18 +1,31 @@
 pipeline {
   agent any 
+  environment{
+    def myString = 'https://github.com/amrimukh1/fooproject.git'
+    def myString1 = 'mvn compile'
+    def myString2 = 'mvn test'
+    def myString3 = '**/TEST*.xml'
+  }
+  
   stages {
+    stage('Checkout') {
+      steps {
+        git ${myString}
+      }
+    }  
+    
     stage('Build') {
       steps {
-        sh "mvn compile"
+        sh ${myString1}
       }
     }  
     stage('Test') {
       steps {
-        sh "mvn test"
+        sh ${myString2}
       }
      post {
       always {
-        junit '**/TEST*.xml'
+        junit ${myString3}
       }
      }
   }
